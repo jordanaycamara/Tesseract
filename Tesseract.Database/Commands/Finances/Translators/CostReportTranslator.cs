@@ -24,7 +24,6 @@ namespace Tesseract.Database.Commands.Finances.Translators
             var aTeamDiscount = discounts.Where(x => x.DiscountType == DiscountTypeEnum.ATeam).SingleOrDefault();
 
             var total = 0.0m;
-            var totalEmployeeCost = 0.0m;
 
             foreach (var employee in employees)
             {
