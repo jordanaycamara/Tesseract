@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>Tesseract.Host</AssemblyName>
+    <RootNamespace>Tesseract.Host</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tesseract.DI\Tesseract.DI.csproj" />
+    <ProjectReference Include="..\Tesseract.Service\Tesseract.Service.csproj" />
+  </ItemGroup>
+
+</Project>

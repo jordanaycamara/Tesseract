@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesseract.Host", "Tesseract\Tesseract.Host.csproj", "{BF77228D-8A45-49C2-927B-474F4DA3D00E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesseract.Service", "Tesseract.Service\Tesseract.Service.csproj", "{2748BBED-D9C1-4624-895D-A9815F6CD210}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesseract.Database", "Tesseract.Database\Tesseract.Database.csproj", "{2B0F5FE9-FFD9-46A6-89F6-5BEAF565220E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesseract.DI", "Tesseract.DI\Tesseract.DI.csproj", "{190760D7-82B0-4457-B392-0DE036D4B698}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF77228D-8A45-49C2-927B-474F4DA3D00E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF77228D-8A45-49C2-927B-474F4DA3D00E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF77228D-8A45-49C2-927B-474F4DA3D00E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF77228D-8A45-49C2-927B-474F4DA3D00E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2748BBED-D9C1-4624-895D-A9815F6CD210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2748BBED-D9C1-4624-895D-A9815F6CD210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2748BBED-D9C1-4624-895D-A9815F6CD210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2748BBED-D9C1-4624-895D-A9815F6CD210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B0F5FE9-FFD9-46A6-89F6-5BEAF565220E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B0F5FE9-FFD9-46A6-89F6-5BEAF565220E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B0F5FE9-FFD9-46A6-89F6-5BEAF565220E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B0F5FE9-FFD9-46A6-89F6-5BEAF565220E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{190760D7-82B0-4457-B392-0DE036D4B698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{190760D7-82B0-4457-B392-0DE036D4B698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{190760D7-82B0-4457-B392-0DE036D4B698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{190760D7-82B0-4457-B392-0DE036D4B698}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B728CA89-C7A4-464B-B785-CC2F8B0BA9C9}
+	EndGlobalSection
+EndGlobal
