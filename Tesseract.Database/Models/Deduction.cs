@@ -6,7 +6,7 @@ using Tesseract.Database.Models.Base;
 
 namespace Tesseract.Database.Models
 {
-    public class Deductions : Identifiable
+    public class Deduction : Identifiable
     {
         public virtual DeductionTypeEnum  DeductionType { get; set; }
         public virtual decimal Amount { get; set; }

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using NHibernate;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Tesseract.Database.Models;
+using System.Linq;
 
 namespace Tesseract.Database.Commands
 {
@@ -12,16 +14,20 @@ namespace Tesseract.Database.Commands
 
     public class GetEmployeeListQuery : IGetEmployeeListQuery
     {
+        private readonly ISessionFactory _sessionFactory;
+
+        public GetEmployeeListQuery(ISessionFactory sessionFactory)
+        {
+            _sessionFactory = sessionFactory;
+        }
+
         public List<Employee> GetEmployeesList()
         {
-            return new List<Employee>
+            using (var session = _sessionFactory.OpenSession())
             {
-                new Employee
-                {
-                    FirstName = "Courtney",
-                    LastName = "I Love You"
-                }
-            };
+                var result = session.QueryOver<Employee>().List<Employee>();
+                return result.ToList();
+            }
         }
     }
 }

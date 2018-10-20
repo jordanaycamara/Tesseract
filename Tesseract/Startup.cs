@@ -30,6 +30,9 @@ namespace Tesseract
 
             var employeeModule = new EmployeeModule();
             employeeModule.Load(services);
+
+            var databaseModule = new DatabaseModule();
+            databaseModule.Load(services, Configuration.GetConnectionString("Tesseract"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

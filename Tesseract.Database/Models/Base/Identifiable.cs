@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Tesseract.Database.Models.Interfaces;
+using Tesseract.Database.Interfaces;
 
 namespace Tesseract.Database.Models.Base
 {

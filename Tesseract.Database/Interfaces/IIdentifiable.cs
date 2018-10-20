@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Tesseract.Database.Models.Interfaces
+namespace Tesseract.Database.Interfaces
 {
     public interface IIdentifiable
     {
