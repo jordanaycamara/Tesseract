@@ -24,6 +24,7 @@ namespace Tesseract.Database.Commands.Finances.Translators
             var aTeamDiscount = discounts.Where(x => x.DiscountType == DiscountTypeEnum.ATeam).SingleOrDefault();
 
             var total = 0.0m;
+            var totalEmployeeCost = 0.0m;
 
             foreach (var employee in employees)
             {
@@ -44,7 +45,9 @@ namespace Tesseract.Database.Commands.Finances.Translators
                 total += employeeCompensation.Amount - totalDeduction;
             };
 
-            viewModel.AnnualCost = total;
+            viewModel.PeriodCost = Math.Round(total / 26, 2);
+            viewModel.MonthlyCost = Math.Round(total / 12, 2);
+            viewModel.AnnualCost = Math.Round(total);
 
             return viewModel;
         }
