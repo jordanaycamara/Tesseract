@@ -1,5 +1,6 @@
 ﻿using Tesseract.Database.Commands;
 using Microsoft.Extensions.DependencyInjection;
+using Tesseract.Database.Repositories;
 
 namespace Tesseract.DI
 {
@@ -11,6 +12,7 @@ namespace Tesseract.DI
             services.AddSingleton<IGetEmployeeListQuery, GetEmployeeListQuery>();
             services.AddSingleton<ISaveEmployeeCommand, SaveEmployeeCommand>();
             services.AddSingleton<IDeleteEmployeeCommand, DeleteEmployeeCommand>();
+            services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
         }
     }
 }

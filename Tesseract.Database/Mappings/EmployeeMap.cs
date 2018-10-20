@@ -13,7 +13,7 @@ namespace Tesseract.Database.Mappings
             Schema(SchemaConstants.Company);
             Map(x => x.FirstName);
             Map(x => x.LastName);
-            HasMany(x => x.Dependents).KeyColumn("EmployeeId").Inverse().Cascade.All();
+            HasMany(x => x.Dependents).KeyColumn("EmployeeId").Inverse().Cascade.All().Not.LazyLoad();
         }
     }
 }

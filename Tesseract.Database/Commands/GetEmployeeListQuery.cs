@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Tesseract.Database.Models;
 using System.Linq;
+using Tesseract.Database.Repositories;
 
 namespace Tesseract.Database.Commands
 {
@@ -14,20 +15,16 @@ namespace Tesseract.Database.Commands
 
     public class GetEmployeeListQuery : IGetEmployeeListQuery
     {
-        private readonly ISessionFactory _sessionFactory;
+        private readonly IEmployeeRepository _repo;
 
-        public GetEmployeeListQuery(ISessionFactory sessionFactory)
+        public GetEmployeeListQuery(IEmployeeRepository repo)
         {
-            _sessionFactory = sessionFactory;
+            _repo = repo;
         }
 
         public List<Employee> GetEmployeesList()
         {
-            using (var session = _sessionFactory.OpenSession())
-            {
-                var result = session.QueryOver<Employee>().List<Employee>();
-                return result.ToList();
-            }
+            return _repo.GetEmployees();
         }
     }
 }

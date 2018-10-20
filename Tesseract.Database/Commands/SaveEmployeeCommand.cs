@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Tesseract.Database.Models;
+using Tesseract.Database.Repositories;
 
 namespace Tesseract.Database.Commands
 {
@@ -12,9 +13,16 @@ namespace Tesseract.Database.Commands
 
     public class SaveEmployeeCommand : ISaveEmployeeCommand
     {
+        private readonly IEmployeeRepository _repo;
+
+        public SaveEmployeeCommand(IEmployeeRepository repo)
+        {
+            _repo = repo;
+        }
+
         public Employee SaveEmployee(Employee employee)
         {
-            return new Employee();
+            return _repo.SaveEmployee(employee);
         }
     }
 }
