@@ -13,7 +13,7 @@ namespace Tesseract.Database.Mappings
         {
             Schema(SchemaConstants.Finances);
 
-            Map(x => x.DeductionType).CustomType<DeductionTypeEnum>();
+            Map(x => x.DeductionType).Column("DeductionTypeId").CustomType<DeductionTypeEnum>();
             Map(x => x.Amount);
         }
     }
