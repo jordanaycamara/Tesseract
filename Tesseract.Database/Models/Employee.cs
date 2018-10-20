@@ -5,11 +5,8 @@ using Tesseract.Database.Models.Base;
 
 namespace Tesseract.Database.Models
 {
-    public class Employee : Identifiable
+    public class Employee : Person
     {
-        public virtual string FirstName { get; set; }
-        public virtual string LastName { get; set; }
-
         public virtual IEnumerable<Dependent> Dependents { get; set; }
     }
 }

@@ -6,6 +6,6 @@ namespace Tesseract.Database.Models
 {
     public class CostReportViewModel
     {
-
+        public decimal TotalCost { get; set; }
     }
 }

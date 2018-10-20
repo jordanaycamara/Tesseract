@@ -1,6 +1,4 @@
-﻿DROP DATABASE tesseract;
-
-CREATE LOGIN TesseractUser WITH PASSWORD = 'Yolo$wag'
+﻿CREATE LOGIN TesseractUser WITH PASSWORD = 'Yolo$wag'
 
 CREATE DATABASE tesseract;
 GO
@@ -25,25 +23,25 @@ CREATE TABLE Company.[Dependent]
 
 EXEC('CREATE SCHEMA Finances');
 
-CREATE TABLE Finances.DeductionType
+CREATE TABLE Finances.BenefitType
 (
     Id INT IDENTITY(1, 1) PRIMARY KEY,
     [Name] VARCHAR(100) NOT NULL,
 )
 
-INSERT INTO Finances.DeductionType ([Name])
+INSERT INTO Finances.BenefitType ([Name])
 
-VALUES ('Employee Benefit'), ('Dependent Benefit')
+VALUES ('Employee Benefit'), ('Dependent Benefit'), ('Employee Compensation')
 
-CREATE TABLE Finances.Deduction
+CREATE TABLE Finances.Benefit
 (
-    Id UNIQUEIDENTIFIER CONSTRAINT [PK_DeductionId] PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
-    DeductionTypeId INT CONSTRAINT [FK_Deduction_DeductionTypeId] FOREIGN KEY REFERENCES Finances.DeductionType(Id),
+    Id UNIQUEIDENTIFIER CONSTRAINT [PK_BenefitId] PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
+    BenefitTypeId INT CONSTRAINT [FK_Benefit_BenefitTypeId] FOREIGN KEY REFERENCES Finances.BenefitType(Id),
     Amount MONEY NOT NULL
 )
 
-INSERT INTO Finances.Deduction (DeductionTypeId, Amount)
-VALUES (1, 1000), (2, 500);
+INSERT INTO Finances.Benefit (BenefitTypeId, Amount)
+VALUES (1, 1000), (2, 500), (3, 2000);
 
 CREATE TABLE Finances.DiscountType
 (

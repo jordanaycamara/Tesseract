@@ -9,7 +9,7 @@ namespace Tesseract.Database.Repositories
 {
     public interface IFinanceRepository
     {
-        List<Deduction> GetDeductions();
+        List<Benefit> GetBenefits();
         List<Discount> GetDiscounts();
     }
 
@@ -22,11 +22,11 @@ namespace Tesseract.Database.Repositories
             _sessionFactory = sessionFactory;
         }
 
-        public List<Deduction> GetDeductions()
+        public List<Benefit> GetBenefits()
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var result = session.QueryOver<Deduction>().List<Deduction>();
+                var result = session.QueryOver<Benefit>().List<Benefit>();
                 return result.ToList();
             }
         }

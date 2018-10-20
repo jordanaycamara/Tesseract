@@ -31,10 +31,10 @@ namespace Tesseract.Database.Commands.Finances
         public CostReportViewModel CalculateCosts()
         {
             var employees = _employeeRepo.GetEmployees();
-            var deductions = _financeRepo.GetDeductions();
+            var benefits = _financeRepo.GetBenefits();
             var discounts = _financeRepo.GetDiscounts();
 
-            var result = _translator.ToViewModel(employees, deductions, discounts);
+            var result = _translator.ToViewModel(employees, benefits, discounts);
             return result;
         }
     }
