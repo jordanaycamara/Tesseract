@@ -25,7 +25,7 @@ namespace Tesseract.Database.Commands.Finances.Translators
 
             var total = 0.0m;
 
-            employees.ForEach(employee =>
+            foreach (var employee in employees)
             {
                 var totalDeduction = 0.0m;
                 var empDeduction = employeeBenefit.Amount;
@@ -42,9 +42,9 @@ namespace Tesseract.Database.Commands.Finances.Translators
                 }
 
                 total += employeeCompensation.Amount - totalDeduction;
-            });
+            };
 
-            viewModel.TotalCost = total;
+            viewModel.AnnualCost = total;
 
             return viewModel;
         }
