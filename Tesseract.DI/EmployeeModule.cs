@@ -9,6 +9,8 @@ namespace Tesseract.DI
         {
             services.AddSingleton<IGetEmployeeQuery, GetEmployeeQuery>();
             services.AddSingleton<IGetEmployeeListQuery, GetEmployeeListQuery>();
+            services.AddSingleton<ISaveEmployeeCommand, SaveEmployeeCommand>();
+            services.AddSingleton<IDeleteEmployeeCommand, DeleteEmployeeCommand>();
         }
     }
 }

@@ -1,0 +1,9 @@
+bin
+obj
+/.vs/Tesseract/DesignTimeBuild/.dtbcache
+/.vs/Tesseract/v15/.suo
+/.vs/Tesseract/v15/Server/sqlite3/db.lock
+/.vs/Tesseract/v15/Server/sqlite3/storage.ide
+/.vs/Tesseract/v15/Server/sqlite3/storage.ide-shm
+/.vs/Tesseract/v15/Server/sqlite3/storage.ide-wal
+/.vs/config/applicationhost.config

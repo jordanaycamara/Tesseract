@@ -14,13 +14,16 @@ namespace Tesseract.Service.Controllers
     {
         private readonly IGetEmployeeQuery _getEmployeeQuery;
         private readonly IGetEmployeeListQuery _getEmployeeListQuery;
+        private readonly ISaveEmployeeCommand _saveEmployeeCommand;
 
         public EmployeeController(
             IGetEmployeeQuery getEmployeeCommand,
-            IGetEmployeeListQuery getEmployeeListCommand)
+            IGetEmployeeListQuery getEmployeeListCommand,
+            ISaveEmployeeCommand saveEmployeeCommand)
         {
             _getEmployeeQuery = getEmployeeCommand;
             _getEmployeeListQuery = getEmployeeListCommand;
+            _saveEmployeeCommand = saveEmployeeCommand;
         }
 
         [HttpGet]
@@ -36,9 +39,9 @@ namespace Tesseract.Service.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] Employee value)
+        public ActionResult<Employee> Post([FromBody] Employee employee)
         {
-
+           return _saveEmployeeCommand.SaveEmployee(employee);
         }
 
         [HttpDelete("{id}")]
