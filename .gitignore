@@ -7,3 +7,15 @@ obj
 /.vs/Tesseract/v15/Server/sqlite3/storage.ide-shm
 /.vs/Tesseract/v15/Server/sqlite3/storage.ide-wal
 /.vs/config/applicationhost.config
+/Tesseract.Host/wwwroot/dist/favicon.ico
+/Tesseract.Host/wwwroot/dist/index.html
+/Tesseract.Host/wwwroot/dist/main.js
+/Tesseract.Host/wwwroot/dist/main.js.map
+/Tesseract.Host/wwwroot/dist/polyfills.js
+/Tesseract.Host/wwwroot/dist/polyfills.js.map
+/Tesseract.Host/wwwroot/dist/runtime.js
+/Tesseract.Host/wwwroot/dist/runtime.js.map
+/Tesseract.Host/wwwroot/dist/styles.js
+/Tesseract.Host/wwwroot/dist/styles.js.map
+/Tesseract.Host/wwwroot/dist/vendor.js
+/Tesseract.Host/wwwroot/dist/vendor.js.map

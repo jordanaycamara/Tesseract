@@ -12,16 +12,6 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/v1/Employee",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "Tesseract": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "api/v1/Employee",
-      "applicationUrl": "https://localhost:8030",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

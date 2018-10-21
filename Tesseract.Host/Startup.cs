@@ -16,6 +16,7 @@ using Tesseract.DI;
 using FluentMigrator.Runner;
 using FluentMigrator.Runner.Initialization;
 using Tesseract.Database.Migrators._2018._10;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 
 namespace Tesseract
 {
@@ -37,6 +38,10 @@ namespace Tesseract
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSpaStaticFiles(x =>
+                x.RootPath = "wwwroot/dist"
+            );
 
             var connectionString = Configuration.GetConnectionString("Master");
             var serviceProvider = services.AddFluentMigratorCore()
@@ -75,8 +80,18 @@ namespace Tesseract
                 app.UseHsts();
             }
 
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "../Tesseract.Client/src";
+                if (env.IsDevelopment())
+                {
+                    spa.UseAngularCliServer(npmScript: "start");
+                }
+            });
         }
     }
 }
