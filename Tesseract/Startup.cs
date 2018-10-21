@@ -13,6 +13,9 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Tesseract.DI;
+using FluentMigrator.Runner;
+using FluentMigrator.Runner.Initialization;
+using Tesseract.Database.Migrators._2018._10;
 
 namespace Tesseract
 {
@@ -34,11 +37,26 @@ namespace Tesseract
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            var connectionString = Configuration.GetConnectionString("Master");
+            var serviceProvider = services.AddFluentMigratorCore()
+            .Configure<AssemblySourceOptions>(x => x.AssemblyNames = new[] { typeof(Migration_1810190).Assembly.GetName().Name })
+            .ConfigureRunner(rb => rb
+            .AddSqlServer2016()
+            .WithGlobalConnectionString(connectionString)
+            .ScanIn(typeof(Migration_1810190).Assembly).For.Migrations())
+            .AddLogging(lb => lb.AddFluentMigratorConsole()).BuildServiceProvider(false);
+
+            using (var scope = serviceProvider.CreateScope())
+            {
+                var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
+                runner.MigrateUp();
+            }
+
             var employeeModule = new EmployeeModule();
             employeeModule.Load(services);
 
             var databaseModule = new DatabaseModule();
-            databaseModule.Load(services, Configuration.GetConnectionString("Tesseract"));
+            databaseModule.Load(services, connectionString);
 
             var financeModule = new FinanceModule();
             financeModule.Load(services);

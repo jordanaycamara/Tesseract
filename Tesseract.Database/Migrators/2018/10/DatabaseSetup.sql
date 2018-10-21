@@ -1,12 +1,4 @@
-﻿CREATE LOGIN TesseractUser WITH PASSWORD = 'Yolo$wag'
-
-CREATE DATABASE tesseract;
-GO
-USE tesseract;
-
-EXEC('CREATE SCHEMA Company');
-
-CREATE TABLE Company.Employee
+﻿CREATE TABLE Company.Employee
 (
     Id UNIQUEIDENTIFIER CONSTRAINT [PK_EmployeeId] PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
     [FirstName] VARCHAR(100) NOT NULL,
@@ -20,8 +12,6 @@ CREATE TABLE Company.[Dependent]
     [LastName] VARCHAR(100) NOT NULL,
     [EmployeeId] UNIQUEIDENTIFIER CONSTRAINT [FK_Dependent_EmployeeId] FOREIGN KEY REFERENCES Company.Employee(Id)
 )
-
-EXEC('CREATE SCHEMA Finances');
 
 CREATE TABLE Finances.BenefitType
 (

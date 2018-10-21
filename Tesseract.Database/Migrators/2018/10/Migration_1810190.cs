@@ -6,16 +6,17 @@ using FluentMigrator;
 
 namespace Tesseract.Database.Migrators._2018._10
 {
-    public class Migrator_1810190 : Migration
+    [Migration(1810190, TransactionBehavior.None, "Creating the Company schema.")]
+    public class Migration_1810190 : Migration
     {
         public override void Up()
         {
-            Execute.EmbeddedScript("DatabaseSetup.sql");
+            Execute.Sql("EXEC ('CREATE SCHEMA Company')");
         }
 
         public override void Down()
         {
-            Execute.Sql("DROP DATABASE tesseract; DROP LOGIN TesseractUser");
+            Execute.Sql("EXEC ('DROP SCHEMA Company')");
         }
     }
 }
