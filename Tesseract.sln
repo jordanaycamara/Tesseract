@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesseract.Host", "Tesseract\Tesseract.Host.csproj", "{BF77228D-8A45-49C2-927B-474F4DA3D00E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesseract.Host", "Tesseract.Host\Tesseract.Host.csproj", "{BF77228D-8A45-49C2-927B-474F4DA3D00E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesseract.Service", "Tesseract.Service\Tesseract.Service.csproj", "{2748BBED-D9C1-4624-895D-A9815F6CD210}"
 EndProject
