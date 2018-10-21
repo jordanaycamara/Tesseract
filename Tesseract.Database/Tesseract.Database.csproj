@@ -6,6 +6,11 @@
 
   <ItemGroup>
     <None Remove="Migrators\2018\10\DatabaseSetup.sql" />
+    <None Remove="Migrators\2018\10\DatabaseTeardown.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Migrators\2018\10\DatabaseTeardown.sql" />
   </ItemGroup>
 
   <ItemGroup>
