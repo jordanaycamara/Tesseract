@@ -20,14 +20,32 @@
             <div class="row">
               <div class="col-lg-12">
                   <h5 style="margin-top: 12px;">Dependents</h5>
-                  <ul class="list-group">
-                      <li *ngFor="let dependent of employee.dependents" class="list-group-item">
-                          <span> {{ dependent.firstName }} {{ dependent.lastName }} </span>
-                          <span id="deleteButton" (click)="onDelete(dependent)" class="fa fa-minus-square pull-right"></span>
-                          <!-- <span (click)="onEdit(task)" class="glyphicon glyphicon-pencil floatright"></span> -->
-                      </li>
-                  </ul>
               </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5">
+                  <input type="text" name="dependentFirstName" class="form-control" placeholder="Required" [(ngModel)]="dependent.firstName" />
+              </div>
+              <div class="col-lg-5">
+                  <input type="text" name="dependentLastName" class="form-control" placeholder="Required" [(ngModel)]="dependent.lastName" />
+              </div>
+              <div class="col-lg-2">
+                  <button class="btn btn-primary pull-right" type="button" (click)="onAdd()" [disabled]="!validateDependent()">
+                      <span class="fa fa-plus"></span>
+                  </button>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-group">
+                        <li *ngFor="let dependent of employee.dependents" class="list-group-item">
+                            <span> {{ dependent.firstName }} {{ dependent.lastName }} </span>
+                            <span (click)="onEdit(dependent)" class="fa fa-pencil floatright"></span>
+                            <span id="deleteButton" (click)="onDelete(dependent)" class="fa fa-minus-square pull-right"></span>
+                            <!-- <span (click)="onEdit(task)" class="glyphicon glyphicon-pencil floatright"></span> -->
+                        </li>
+                    </ul>
+                </div>
             </div>
           </form>
         </div>
@@ -35,7 +53,7 @@
           <div class="row">
               <div class="col-lg-12">
                   <button type="button" class="btn btn-outline-primary pull-left" (click)="modal.dismiss()">Cancel</button>
-                  <button type="button" class="btn btn-primary pull-right" (click)="modal.close(employee)">Save</button>
+                  <button type="button" class="btn btn-primary pull-right" (click)="modal.close(employee)" [disabled]="!validateEmployee()"> Save</button>
               </div>
           </div>
         </div>

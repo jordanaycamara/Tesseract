@@ -17,17 +17,16 @@ export class AddEmployeeModalComponent {
   employee: Employee;
   @Output() onClose = new EventEmitter();
   @Input() isNew = true;
+  dependent: Dependent;
 
   constructor(private modalService: NgbModal, private employeeService: EmployeeService, private resourcesService: ResourcesService) {
   }
 
   open(content) {
+    this.dependent = new Dependent();
+
     if (this.isNew) {
       this.employee = new Employee();
-      var ethan = new Dependent();
-      ethan.firstName = "Ethan";
-      ethan.lastName = "Camara";
-      this.employee.dependents = [ethan];
     }
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
         this.employeeService.saveEmployee(result).then( (response: [Employee]) => {
@@ -36,9 +35,34 @@ export class AddEmployeeModalComponent {
     });
   }
 
+  validateEmployee() {
+    return this.employee.firstName && this.employee.lastName;
+  }
+
+  validateDependent() {
+    return this.dependent.firstName && this.dependent.lastName;
+  }
+
+  onAdd() {
+    if (this.dependent.id) {
+      var existingIndex = this.resourcesService._.findIndex(this.employee.dependents, function(object) {
+        return object.id == this.dependent.id;
+      });
+      this.employee.dependents[existingIndex] = this.dependent;
+    } else {
+      this.employee.dependents.push(this.dependent);
+    }
+
+    this.dependent = new Dependent();
+  }
+
+  onEdit(dependent) {
+    this.dependent = dependent;
+  }
+
   onDelete(dependent) {
-    this.resourcesService._.remove(this.employee.dependents, {
-      id: dependent.id
+    this.resourcesService._.remove(this.employee.dependents, function(object) {
+      return object === dependent;
     });
   }
 }

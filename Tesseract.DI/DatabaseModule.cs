@@ -5,7 +5,9 @@ using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using FluentNHibernate.Automapping;
 using Tesseract.Database.Mappings;
+using Tesseract.Database.Models;
 
 namespace Tesseract.DI
 {
@@ -20,8 +22,11 @@ namespace Tesseract.DI
         {
             return Fluently.Configure().Database(
                 MsSqlConfiguration.MsSql2012.ConnectionString(connectionString).ShowSql())
-                .Mappings(m => m.FluentMappings
-                .AddFromAssemblyOf<EmployeeMap>()).BuildSessionFactory();
+                .Mappings(m =>
+                {
+                    m.FluentMappings
+                        .AddFromAssemblyOf<EmployeeMap>();
+                }).BuildSessionFactory();
         }
     }
 }
