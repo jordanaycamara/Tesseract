@@ -1,9 +1,11 @@
+// angular modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
+// shared modules
 import { RoutesModule } from './routes.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
 
 import { EmployeeModule } from './employee/employee.module';
 import { CostReportModule } from './cost/costReport.module';

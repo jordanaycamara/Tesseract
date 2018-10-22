@@ -1,12 +1,22 @@
 import { Component } from '@angular/core';
 import { EmployeeService } from './employee.service';
+import {GridOptions, Grid} from "ag-grid-community";
 
 @Component({
   selector: 'employee',
   templateUrl: './employee.component.html'
 })
 export class EmployeeComponent {
-    employees: any = new Object();
+    gridOptions = <GridOptions>{
+        columnDefs: [
+            {headerName: 'First Name', field: 'firstName' },
+            {headerName: 'Last Name', field: 'lastName' }
+        ],
+
+        enableColResize: true,
+        enableSorting: true,
+        rowSelection: 'single',
+    };
 
     constructor(private service: EmployeeService) {
 
@@ -14,7 +24,7 @@ export class EmployeeComponent {
 
     ngOnInit() {
         this.service.getEmployees().then((response: any) => {
-             this.employees = response;
+             this.gridOptions.api.setRowData(response);
         });
     }
 }
