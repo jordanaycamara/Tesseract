@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { EmployeeComponent } from './employee.component';
+import { EmployeeService } from './employee.service';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,9 @@ import { EmployeeComponent } from './employee.component';
   exports:[
       EmployeeComponent
   ],
-  providers: [],
+  providers: [
+      EmployeeService
+  ],
   bootstrap: [EmployeeComponent]
 })
 export class EmployeeModule { }
