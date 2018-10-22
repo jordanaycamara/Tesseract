@@ -1,6 +1,18 @@
-<ag-grid-angular 
-    style="width: 500px; height: 500px;" 
-    class="ag-theme-balham"
-    [gridOptions]="gridOptions"
-    >
-</ag-grid-angular>
+<div class="row">
+    <div class="col-lg-6">
+        <legend>Employees</legend>
+    </div>
+    <div class="col-lg-6">
+        <button id="addEmployeeBtn" type="button" class="btn btn-primary pull-right">Add Employee</button>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-lg-12">
+        <ag-grid-angular 
+        id="employeeGrid"
+        class="ag-theme-balham"
+        [gridOptions]="gridOptions"
+        ></ag-grid-angular>
+    </div>
+</div>

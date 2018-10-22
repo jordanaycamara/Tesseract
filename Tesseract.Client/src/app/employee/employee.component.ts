@@ -4,7 +4,8 @@ import {GridOptions, Grid} from "ag-grid-community";
 
 @Component({
   selector: 'employee',
-  templateUrl: './employee.component.html'
+  templateUrl: './employee.component.html',
+  styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent {
     gridOptions = <GridOptions>{
