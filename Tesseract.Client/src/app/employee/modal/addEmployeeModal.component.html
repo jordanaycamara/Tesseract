@@ -8,13 +8,8 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <label for="dateOfBirth">Date of birth</label>
-              <div class="input-group">
-                <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-                </div>
-              </div>
+              <label for="firstName">First Name</label>
+              <input id="firstName" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
             </div>
           </form>
         </div>
@@ -22,5 +17,5 @@
           <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
         </div>
       </ng-template>
-      
+
       <button id="addEmployeeBtn" class="btn btn-lg btn-outline-primary pull-right" (click)="open(content)">Add Employee</button>
