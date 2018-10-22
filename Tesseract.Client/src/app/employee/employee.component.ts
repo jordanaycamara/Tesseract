@@ -28,6 +28,14 @@ export class EmployeeComponent {
     }
 
     ngOnInit() {
+        this.getEmployees();
+    }
+
+    onClose($event: any) {
+        this.getEmployees();
+    }
+
+    private getEmployees() {
         this.service.getEmployees().then((response: [Employee]) => {
             this.employees = response;
             this.gridOptions.api.setRowData(response);

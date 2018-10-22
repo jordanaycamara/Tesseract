@@ -1,7 +1,8 @@
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {Component} from '@angular/core';
+import {Component, Input, Output} from '@angular/core';
 import { Employee } from '../../models/Employee';
 import { EmployeeService } from '../employee.service';
+import { EventEmitter } from '@angular/core';
 
 
 @Component({
@@ -11,13 +12,21 @@ import { EmployeeService } from '../employee.service';
 })
 
 export class AddEmployeeModalComponent {
-  employee = new Employee();
+  employee: Employee;
+  @Output() onClose = new EventEmitter();
+  @Input() isNew = true;
 
-  constructor(private modalService: NgbModal, private employeeService: EmployeeService) {}
+  constructor(private modalService: NgbModal, private employeeService: EmployeeService) {
+  }
 
   open(content) {
+    if (this.isNew) {
+      this.employee = new Employee();
+    }
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-        this.employeeService.saveEmployee(result);
+        this.employeeService.saveEmployee(result).then( (response: [Employee]) => {
+          this.onClose.emit();
+        });
     });
   }
 }
