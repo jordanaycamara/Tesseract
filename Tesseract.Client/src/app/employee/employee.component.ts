@@ -12,8 +12,7 @@ export class EmployeeComponent {
             {headerName: 'First Name', field: 'firstName' },
             {headerName: 'Last Name', field: 'lastName' }
         ],
-
-        enableColResize: true,
+        enableColResize: false,
         enableSorting: true,
         rowSelection: 'single',
     };
@@ -25,6 +24,13 @@ export class EmployeeComponent {
     ngOnInit() {
         this.service.getEmployees().then((response: any) => {
              this.gridOptions.api.setRowData(response);
+             this.gridOptions.api.sizeColumnsToFit();
         });
+
+        this.gridOptions.onColumnResized = this.onColumnResized;
+    }
+
+    private onColumnResized() {
+        this.gridOptions.api.sizeColumnsToFit();
     }
 }
