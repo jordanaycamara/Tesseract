@@ -22,6 +22,11 @@ namespace Tesseract.Database.Commands
 
         public Employee SaveEmployee(Employee employee)
         {
+            foreach (var dependent in employee.Dependents)
+            {
+                dependent.Employee = employee;
+            }
+
             return _repo.SaveEmployee(employee);
         }
     }

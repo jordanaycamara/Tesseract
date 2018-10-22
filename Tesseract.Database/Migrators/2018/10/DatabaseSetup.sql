@@ -10,7 +10,7 @@ CREATE TABLE Company.[Dependent]
     Id UNIQUEIDENTIFIER CONSTRAINT [PK_DependentId] PRIMARY KEY DEFAULT NEWID(),
     [FirstName] VARCHAR(100) NOT NULL,
     [LastName] VARCHAR(100) NOT NULL,
-    [EmployeeId] UNIQUEIDENTIFIER CONSTRAINT [FK_Dependent_EmployeeId] FOREIGN KEY REFERENCES Company.Employee(Id)
+    [EmployeeId] UNIQUEIDENTIFIER CONSTRAINT [FK_Dependent_EmployeeId] FOREIGN KEY REFERENCES Company.Employee(Id) NOT NULL
 )
 
 CREATE TABLE Finances.BenefitType
@@ -26,7 +26,7 @@ VALUES ('Employee Benefit'), ('Dependent Benefit'), ('Employee Compensation')
 CREATE TABLE Finances.Benefit
 (
     Id UNIQUEIDENTIFIER CONSTRAINT [PK_BenefitId] PRIMARY KEY DEFAULT NEWID(),
-    BenefitTypeId INT CONSTRAINT [FK_Benefit_BenefitTypeId] FOREIGN KEY REFERENCES Finances.BenefitType(Id),
+    BenefitTypeId INT CONSTRAINT [FK_Benefit_BenefitTypeId] FOREIGN KEY REFERENCES Finances.BenefitType(Id) NOT NULL,
     Amount MONEY NOT NULL
 )
 
@@ -45,7 +45,7 @@ VALUES ('A-Team')
 CREATE TABLE Finances.Discount
 (
     Id UNIQUEIDENTIFIER CONSTRAINT [PK_DiscountId] PRIMARY KEY DEFAULT NEWID(),
-    DiscountTypeId INT CONSTRAINT [FK_Discount_DiscountTypeId] FOREIGN KEY REFERENCES Finances.DiscountType(Id),
+    DiscountTypeId INT CONSTRAINT [FK_Discount_DiscountTypeId] FOREIGN KEY REFERENCES Finances.DiscountType(Id) NOT NULL,
     [Percentage] DECIMAL(9, 2) NULL,
     [Amount] MONEY NULL
 )
