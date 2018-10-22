@@ -7,9 +7,15 @@
         </div>
         <div class="modal-body">
           <form>
-            <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input id="firstName" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+            <div class="row">
+              <div class="col-lg-6">
+                <label for="firstName">First Name</label>
+                <input id="firstName" type="text" class="form-control" placeholder="Required">
+              </div>
+              <div class="col-lg-6">
+                <label for="lastName">Last Name</label>
+                <input id="lastName" type="text" class="form-control" placeholder="Required">
+              </div>
             </div>
           </form>
         </div>
