@@ -36,7 +36,7 @@ namespace Tesseract.Database.Repositories
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var result = session.QueryOver<Employee>().List<Employee>();
+                var result = session.QueryOver<Employee>().List<Employee>().OrderBy(x => x.LastName);
                 return result.ToList();
             }
         }
