@@ -26,11 +26,5 @@ export class EmployeeComponent {
              this.gridOptions.api.setRowData(response);
              this.gridOptions.api.sizeColumnsToFit();
         });
-
-        this.gridOptions.onColumnResized = this.onColumnResized;
-    }
-
-    private onColumnResized() {
-        this.gridOptions.api.sizeColumnsToFit();
     }
 }
