@@ -1,1 +1,11 @@
-<employee></employee>
+
+<nav>
+    <ngb-tabset class="tabset1">
+            <ngb-tab *ngFor="let tab of tabs">
+                    <ng-template ngbTabTitle>
+                        <a [routerLink]="[tab.link]">{{tab.title}}</a>
+                    </ng-template>
+            </ngb-tab>
+    </ngb-tabset>
+</nav>
+<router-outlet></router-outlet>

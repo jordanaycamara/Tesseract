@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 
 import { EmployeeModule } from './employee/employee.module';
 import { CostReportModule } from './cost/costReport.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CostReportModule } from './cost/costReport.module';
     HttpClientModule,
     RoutesModule,
     EmployeeModule,
-    CostReportModule
+    CostReportModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
