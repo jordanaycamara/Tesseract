@@ -4,6 +4,7 @@ import { Employee } from '../../models/Employee';
 import { EmployeeService } from '../employee.service';
 import { EventEmitter } from '@angular/core';
 import { Dependent } from '../../models/Dependent';
+import { ResourcesService } from '../../resources/resources.services';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class AddEmployeeModalComponent {
   @Output() onClose = new EventEmitter();
   @Input() isNew = true;
 
-  constructor(private modalService: NgbModal, private employeeService: EmployeeService) {
+  constructor(private modalService: NgbModal, private employeeService: EmployeeService, private resourcesService: ResourcesService) {
   }
 
   open(content) {
@@ -32,6 +33,12 @@ export class AddEmployeeModalComponent {
         this.employeeService.saveEmployee(result).then( (response: [Employee]) => {
           this.onClose.emit();
         });
+    });
+  }
+
+  onDelete(dependent) {
+    this.resourcesService._.remove(this.employee.dependents, {
+      id: dependent.id
     });
   }
 }
