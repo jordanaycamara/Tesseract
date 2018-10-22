@@ -12,4 +12,8 @@ export class EmployeeService {
     getEmployees() {
         return this.abstractService.get(this.resourcesService.serviceUrls.employee);
     }
+
+    saveEmployee(employee) {
+        return this.abstractService.post(this.resourcesService.serviceUrls.employee, employee);
+    }
 }

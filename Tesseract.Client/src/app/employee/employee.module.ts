@@ -3,6 +3,7 @@ import { EmployeeComponent } from './employee.component';
 import { EmployeeService } from './employee.service';
 import { AddEmployeeModalComponent } from './modal/addEmployeeModal.component';
 import { ThirdPartyModule } from '../thirdparty/thirdparty.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,6 +13,7 @@ import { ThirdPartyModule } from '../thirdparty/thirdparty.module';
     AddEmployeeModalComponent
   ],
   imports: [
+      FormsModule,
       ThirdPartyModule
   ],
   exports:[

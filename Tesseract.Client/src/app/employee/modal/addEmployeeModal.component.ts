@@ -1,5 +1,7 @@
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {Component} from '@angular/core';
+import { Employee } from '../../models/Employee';
+import { EmployeeService } from '../employee.service';
 
 
 @Component({
@@ -9,25 +11,13 @@ import {Component} from '@angular/core';
 })
 
 export class AddEmployeeModalComponent {
-  closeResult: string;
+  employee = new Employee();
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private employeeService: EmployeeService) {}
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        this.employeeService.saveEmployee(result);
     });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
   }
 }
