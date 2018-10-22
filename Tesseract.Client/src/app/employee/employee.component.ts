@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { EmployeeService } from './employee.service';
 import {GridOptions, Grid} from "ag-grid-community";
 import { AddEmployeeModalComponent } from './modal/addEmployeeModal.component';
+import { Employee } from '../models/Employee';
 
 @Component({
   selector: 'employee',
@@ -10,6 +11,8 @@ import { AddEmployeeModalComponent } from './modal/addEmployeeModal.component';
   entryComponents: [AddEmployeeModalComponent]
 })
 export class EmployeeComponent {
+    employees: [Employee];
+
     gridOptions = <GridOptions>{
         columnDefs: [
             {headerName: 'First Name', field: 'firstName' },
@@ -25,9 +28,10 @@ export class EmployeeComponent {
     }
 
     ngOnInit() {
-        this.service.getEmployees().then((response: any) => {
-             this.gridOptions.api.setRowData(response);
-             this.gridOptions.api.sizeColumnsToFit();
+        this.service.getEmployees().then((response: [Employee]) => {
+            this.employees = response;
+            this.gridOptions.api.setRowData(response);
+            this.gridOptions.api.sizeColumnsToFit();
         });
     }
 }
