@@ -6,14 +6,14 @@ import { EmployeeService } from './employee.service';
   templateUrl: './employee.component.html'
 })
 export class EmployeeComponent {
-    employees: any;
+    employees: any = new Object();
 
-    constructor(private employeeService: EmployeeService) {
+    constructor(private service: EmployeeService) {
 
     }
 
     ngOnInit() {
-        this.employeeService.getEmployees().then((response: any) => {
+        this.service.getEmployees().then((response: any) => {
              this.employees = response;
         });
     }
