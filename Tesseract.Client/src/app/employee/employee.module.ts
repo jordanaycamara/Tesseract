@@ -4,7 +4,7 @@ import { EmployeeService } from './employee.service';
 import { AddEmployeeModalComponent } from './modal/addEmployeeModal.component';
 import { ThirdPartyModule } from '../thirdparty/thirdparty.module';
 import { FormsModule } from '@angular/forms';
-
+import {CommonModule} from '@angular/common';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
       FormsModule,
-      ThirdPartyModule
+      ThirdPartyModule,
+      CommonModule
   ],
   exports:[
       EmployeeComponent,
