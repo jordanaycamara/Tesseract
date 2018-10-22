@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { EmployeeService } from './employee.service';
 import {GridOptions, Grid} from "ag-grid-community";
+import { AddEmployeeModalComponent } from './modal/addEmployeeModal.component';
 
 @Component({
   selector: 'employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss']
+  styleUrls: ['./employee.component.scss'],
+  entryComponents: [AddEmployeeModalComponent]
 })
 export class EmployeeComponent {
     gridOptions = <GridOptions>{
