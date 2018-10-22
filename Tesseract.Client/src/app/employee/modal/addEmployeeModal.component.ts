@@ -4,7 +4,8 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'add-employee-modal',
-  templateUrl: './addEmployeeModal.component.html'
+  templateUrl: './addEmployeeModal.component.html',
+  styleUrls: ['./addEmployeeModal.component.scss']
 })
 
 export class AddEmployeeModalComponent {
