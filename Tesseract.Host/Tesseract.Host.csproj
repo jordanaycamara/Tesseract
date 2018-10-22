@@ -22,6 +22,6 @@
     <ProjectReference Include="..\Tesseract.Service\Tesseract.Service.csproj" />
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties Properties_4launchSettings_1json__JSONSchema="http://json.schemastore.org/openfin" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties Properties_4launchSettings_1json__JSONSchema="http://json.schemastore.org/launchsettings" /></VisualStudio></ProjectExtensions>
 
 </Project>
