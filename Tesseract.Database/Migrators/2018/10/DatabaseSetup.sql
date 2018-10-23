@@ -49,5 +49,5 @@ CREATE TABLE Finances.Discount
     [Percentage] DECIMAL(9, 2) NOT NULL
 )
 
-INSERT INTO Finances.Discount (DiscountTypeId, [Percentage], Amount)
-VALUES (1, 0.10, NULL)
+INSERT INTO Finances.Discount (DiscountTypeId, [Percentage])
+VALUES (1, 0.10)
