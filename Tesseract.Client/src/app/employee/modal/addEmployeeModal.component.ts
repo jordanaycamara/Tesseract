@@ -32,6 +32,8 @@ export class AddEmployeeModalComponent {
         this.employeeService.saveEmployee(result).then( (response: [Employee]) => {
           this.onClose.emit();
         });
+    }, (reason) => {
+
     });
   }
 
