@@ -41,7 +41,7 @@ namespace Tesseract.Database.Commands.Finances.Translators
                     totalDeduction += depDeduction;
                 }
 
-                total += employeeCompensation.Amount - totalDeduction;
+                total += Math.Min(employeeCompensation.Amount - totalDeduction, 0);
             };
 
             viewModel.PeriodCost = Math.Round(total / 26, 2);
