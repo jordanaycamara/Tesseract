@@ -1,5 +1,5 @@
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {Component, Input, Output} from '@angular/core';
+import {Component, Input, Output, ViewChild, ElementRef} from '@angular/core';
 import { Employee } from '../../models/Employee';
 import { EmployeeService } from '../employee.service';
 import { EventEmitter } from '@angular/core';
@@ -14,21 +14,25 @@ import { ResourcesService } from '../../resources/resources.services';
 })
 
 export class AddEmployeeModalComponent {
-  employee: Employee;
   @Output() onClose = new EventEmitter();
-  @Input() isNew = true;
+  private isNew: boolean;
+  employee: Employee;
   dependent: Dependent;
+
+  @ViewChild('content')
+  content: ElementRef;
 
   constructor(private modalService: NgbModal, private employeeService: EmployeeService, private resourcesService: ResourcesService) {
   }
 
-  open(content) {
+  open(employee: Employee = null) {
     this.dependent = new Dependent(this.resourcesService);
 
-    if (this.isNew) {
-      this.employee = new Employee(this.resourcesService);
-    }
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    var isNew = !employee;
+    this.employee = !isNew ? employee : new Employee(this.resourcesService);
+    this.isNew = isNew;
+
+    this.modalService.open(this.content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
         this.employeeService.saveEmployee(result).then( (response: [Employee]) => {
           this.onClose.emit();
         });
@@ -46,10 +50,6 @@ export class AddEmployeeModalComponent {
   }
 
   onAdd() {
-    if (this.dependent.id) {
-
-    } else {
-    }
     this.employee.dependents.push(this.dependent);
     this.dependent = new Dependent(this.resourcesService);
   }

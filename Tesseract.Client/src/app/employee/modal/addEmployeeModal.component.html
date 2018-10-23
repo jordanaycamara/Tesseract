@@ -25,15 +25,21 @@
             <div class="row">
               <div class="col-lg-5">
                   <label for="dependentFirstName">First Name</label>
+              </div>
+              <div class="col-lg-5">
+                  <label for="dependentLastName">Last Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5">
                   <input type="text" name="dependentFirstName" class="form-control" placeholder="Required" [(ngModel)]="dependent.firstName" />
               </div>
               <div class="col-lg-5">
-                  <label for="dependentLastName">First Name</label>
                   <input type="text" name="dependentLastName" class="form-control" placeholder="Required" [(ngModel)]="dependent.lastName" />
               </div>
               <div class="col-lg-2">
                   <button class="btn btn-primary pull-right" type="button" (click)="onAdd()" [disabled]="!validateDependent()">
-                      <span class="fa fa-plus"></span>
+                      <span class="fa fa-check"></span>
                   </button>
               </div>
             </div>
@@ -60,4 +66,4 @@
         </div>
       </ng-template>
 
-      <button id="addEmployeeBtn" class="btn btn-outline-primary pull-right" (click)="open(content)">Add Employee</button>
+      <button id="addEmployeeBtn" class="btn btn-outline-primary pull-right" (click)="open()">Add Employee</button>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { EmployeeService } from './employee.service';
 import {GridOptions, Grid} from "ag-grid-community";
 import { AddEmployeeModalComponent } from './modal/addEmployeeModal.component';
@@ -13,8 +13,13 @@ import { EditCellRendererComponent } from '../common/cellRenderer/editCellRender
 })
 export class EmployeeComponent {
     employees: [Employee];
+    @ViewChild(AddEmployeeModalComponent)
+    modalComponent: AddEmployeeModalComponent;
 
     gridOptions = <GridOptions>{
+        context: {
+            componentParent: this
+        },
         columnDefs: [
             { headerName: 'First Name', field: 'firstName' },
             { headerName: 'Last Name', field: 'lastName' },
@@ -45,7 +50,7 @@ export class EmployeeComponent {
         });
     }
 
-    private editEmployee(gridData) {
-
+    editEmployee(gridData) {
+        gridData.context.componentParent.modalComponent.open(gridData.data);
     }
 }
