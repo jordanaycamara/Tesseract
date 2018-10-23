@@ -53,8 +53,9 @@ export class EmployeeComponent {
     }
 
     private deleteEmployee(gridData) {
-        gridData.context.componentParent.service.deleteEmployee(gridData.data.id).then((response: any) => {
-            this.getEmployees();
+        var component = gridData.context.componentParent;
+        component.service.deleteEmployee(gridData.data.id).then((response: any) => {
+            component.getEmployees();
         });
     }
 
