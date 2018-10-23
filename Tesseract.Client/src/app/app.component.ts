@@ -1,23 +1,34 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'Tesseract';
   tabs = [
     { link : '/Employees', title : 'Employees' },
-    { link : '/Cost', title : 'Cost Report' }
+    { link : '/Cost', title : 'Report' }
   ];
 
   selectedTab = this.tabs[0];
 
-  getTabClass(tab) {
-    return this.selectedTab === tab ? "active" : "";
+  constructor(private router: Router) {
+
   }
 
-  setSelectedTab(tab) {
+  getTabClass(tab) {
+    var classes = ['btn', 'btn-outline-primary', 'navButton'];
+    if (this.selectedTab === tab) {
+      classes.push('active');
+    }
+    return classes;
+  }
+
+  onClick(tab) {
     this.selectedTab = tab;
+    this.router.navigate([tab.link]);
   }
 }

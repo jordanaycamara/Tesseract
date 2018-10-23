@@ -1,11 +1,9 @@
 
 <nav>
-    <ngb-tabset class="tabset1">
-            <ngb-tab *ngFor="let tab of tabs">
-                    <ng-template ngbTabTitle>
-                        <a [routerLink]="[tab.link]">{{tab.title}}</a>
-                    </ng-template>
-            </ngb-tab>
-    </ngb-tabset>
+    <div class="navChild btn-group btn-group-toggle" ngbRadioGroup>
+            <label *ngFor="let tab of tabs" ngbButtonLabel [ngClass]="getTabClass(tab)" (click)="onClick(tab)">
+                <input ngButton type="radio"> {{ tab.title }}
+            </label>
+    </div>
 </nav>
 <router-outlet></router-outlet>
