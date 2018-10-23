@@ -39,7 +39,9 @@ export class AppComponent {
         return element.link == event.url;
       });
 
-      this.selectedTab = selectedTab;
+      if (selectedTab) {
+        this.selectedTab = selectedTab;
+      }
       return;
     }
   }
