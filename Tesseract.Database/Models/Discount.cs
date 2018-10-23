@@ -9,7 +9,6 @@ namespace Tesseract.Database.Models
     public class Discount : Identifiable
     {
         public virtual DiscountTypeEnum DiscountType { get; set; }
-        public virtual decimal? Percentage { get; set; }
-        public virtual decimal? Amount { get; set; }
+        public virtual decimal Percentage { get; set; }
     }
 }

@@ -46,8 +46,7 @@ CREATE TABLE Finances.Discount
 (
     Id UNIQUEIDENTIFIER CONSTRAINT [PK_DiscountId] PRIMARY KEY DEFAULT NEWID(),
     DiscountTypeId INT CONSTRAINT [FK_Discount_DiscountTypeId] FOREIGN KEY REFERENCES Finances.DiscountType(Id) NOT NULL,
-    [Percentage] DECIMAL(9, 2) NULL,
-    [Amount] MONEY NULL
+    [Percentage] DECIMAL(9, 2) NOT NULL
 )
 
 INSERT INTO Finances.Discount (DiscountTypeId, [Percentage], Amount)

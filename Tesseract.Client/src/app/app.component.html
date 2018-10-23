@@ -1,9 +1,6 @@
-
-<nav>
-    <div class="navChild btn-group btn-group-toggle" ngbRadioGroup>
-            <label *ngFor="let tab of tabs" ngbButtonLabel [ngClass]="getTabClass(tab)" (click)="onClick(tab)">
-                <input ngButton type="radio"> {{ tab.title }}
-            </label>
-    </div>
-</nav>
+<div class="navChild btn-group btn-group-toggle" ngbRadioGroup>
+    <label *ngFor="let tab of tabs" ngbButtonLabel [ngClass]="getTabClass(tab)" (click)="onClick(tab)">
+        <input ngButton type="radio"> {{ tab.title }}
+    </label>
+</div>
 <router-outlet></router-outlet>

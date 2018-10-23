@@ -15,7 +15,7 @@ import { ResourcesService } from '../../resources/resources.services';
 
 export class AddEmployeeModalComponent {
   @Output() onClose = new EventEmitter();
-  private isNew: boolean;
+  isNew: boolean;
   employee: Employee;
   dependent: Dependent;
 
