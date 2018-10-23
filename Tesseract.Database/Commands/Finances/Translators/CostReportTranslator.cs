@@ -18,10 +18,10 @@ namespace Tesseract.Database.Commands.Finances.Translators
         {
             var viewModel = new CostReportViewModel();
 
-            var employeeCompensation = benefits.Where(x => x.BenefitType == BenefitTypeEnum.EmployeeCompensation).SingleOrDefault();
-            var employeeBenefit = benefits.Where(x => x.BenefitType == BenefitTypeEnum.EmployeeBenefit).SingleOrDefault();
-            var dependentBenefit = benefits.Where(x => x.BenefitType == BenefitTypeEnum.DependentBenefit).SingleOrDefault();
-            var aTeamDiscount = discounts.Where(x => x.DiscountType == DiscountTypeEnum.ATeam).SingleOrDefault();
+            var employeeCompensation = benefits.SingleOrDefault(x => x.BenefitType == BenefitTypeEnum.EmployeeCompensation);
+            var employeeBenefit = benefits.SingleOrDefault(x => x.BenefitType == BenefitTypeEnum.EmployeeBenefit);
+            var dependentBenefit = benefits.SingleOrDefault(x => x.BenefitType == BenefitTypeEnum.DependentBenefit);
+            var aTeamDiscount = discounts.SingleOrDefault(x => x.DiscountType == DiscountTypeEnum.ATeam);
 
             var total = 0.0m;
 
@@ -41,7 +41,7 @@ namespace Tesseract.Database.Commands.Finances.Translators
                     totalDeduction += depDeduction;
                 }
 
-                total += Math.Min(employeeCompensation.Amount - totalDeduction, 0);
+                total += Math.Max(employeeCompensation.Amount - totalDeduction, 0);
             };
 
             viewModel.PeriodCost = Math.Round(total / 26, 2);
