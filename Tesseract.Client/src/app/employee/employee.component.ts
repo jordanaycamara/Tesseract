@@ -30,6 +30,7 @@ export class EmployeeComponent {
         enableColResize: false,
         enableSorting: true,
         rowSelection: 'single',
+        onRowDoubleClicked: this.editEmployee
     };
 
     constructor(private service: EmployeeService) {
