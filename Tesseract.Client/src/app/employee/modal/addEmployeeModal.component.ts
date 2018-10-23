@@ -23,10 +23,10 @@ export class AddEmployeeModalComponent {
   }
 
   open(content) {
-    this.dependent = new Dependent();
+    this.dependent = new Dependent(this.resourcesService);
 
     if (this.isNew) {
-      this.employee = new Employee();
+      this.employee = new Employee(this.resourcesService);
     }
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
         this.employeeService.saveEmployee(result).then( (response: [Employee]) => {
@@ -45,22 +45,23 @@ export class AddEmployeeModalComponent {
 
   onAdd() {
     if (this.dependent.id) {
-      var existingIndex = this.resourcesService._.findIndex(this.employee.dependents, function(object) {
-        return object.id == this.dependent.id;
-      });
-      this.employee.dependents[existingIndex] = this.dependent;
-    } else {
-      this.employee.dependents.push(this.dependent);
-    }
 
-    this.dependent = new Dependent();
+    } else {
+    }
+    this.employee.dependents.push(this.dependent);
+    this.dependent = new Dependent(this.resourcesService);
   }
 
   onEdit(dependent) {
+    this.removeFromDependents(dependent);
     this.dependent = dependent;
   }
 
   onDelete(dependent) {
+    this.removeFromDependents(dependent);
+  }
+
+  private removeFromDependents(dependent) {
     this.resourcesService._.remove(this.employee.dependents, function(object) {
       return object === dependent;
     });
