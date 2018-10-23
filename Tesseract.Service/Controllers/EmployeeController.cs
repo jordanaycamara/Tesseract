@@ -15,15 +15,18 @@ namespace Tesseract.Service.Controllers
         private readonly IGetEmployeeQuery _getEmployeeQuery;
         private readonly IGetEmployeeListQuery _getEmployeeListQuery;
         private readonly ISaveEmployeeCommand _saveEmployeeCommand;
+        private readonly IDeleteEmployeeCommand _deleteEmployeeCommand;
 
         public EmployeeController(
             IGetEmployeeQuery getEmployeeCommand,
             IGetEmployeeListQuery getEmployeeListCommand,
-            ISaveEmployeeCommand saveEmployeeCommand)
+            ISaveEmployeeCommand saveEmployeeCommand,
+            IDeleteEmployeeCommand deleteEmployeeCommand)
         {
             _getEmployeeQuery = getEmployeeCommand;
             _getEmployeeListQuery = getEmployeeListCommand;
             _saveEmployeeCommand = saveEmployeeCommand;
+            _deleteEmployeeCommand = deleteEmployeeCommand;
         }
 
         [HttpGet]
@@ -47,6 +50,7 @@ namespace Tesseract.Service.Controllers
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {
+            _deleteEmployeeCommand.DeleteEmployee(id);
         }
     }
 }

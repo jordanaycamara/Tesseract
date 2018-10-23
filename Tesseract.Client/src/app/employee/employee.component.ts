@@ -3,7 +3,8 @@ import { EmployeeService } from './employee.service';
 import {GridOptions, Grid} from "ag-grid-community";
 import { AddEmployeeModalComponent } from './modal/addEmployeeModal.component';
 import { Employee } from '../models/Employee';
-import { EditCellRendererComponent } from '../common/cellRenderer/editCellRenderer.component';
+import { EditCellRendererComponent } from '../common/cellRenderer/editCell/editCellRenderer.component';
+import { DeleteCellRendererComponent } from '../common/cellRenderer/deleteCell/deleteCellRenderer.component';
 
 @Component({
   selector: 'employee',
@@ -23,7 +24,8 @@ export class EmployeeComponent {
         columnDefs: [
             { headerName: 'First Name', field: 'firstName' },
             { headerName: 'Last Name', field: 'lastName' },
-            { headerName: '', width: 20, cellRendererFramework: EditCellRendererComponent, onCellClicked: this.editEmployee }
+            { headerName: '', width: 20, cellRendererFramework: EditCellRendererComponent, onCellClicked: this.editEmployee },
+            { headerName: '', width: 20, cellRendererFramework: DeleteCellRendererComponent, onCellClicked: this.deleteEmployee }
         ],
         enableColResize: false,
         enableSorting: true,
@@ -50,7 +52,13 @@ export class EmployeeComponent {
         });
     }
 
-    editEmployee(gridData) {
+    private deleteEmployee(gridData) {
+        gridData.context.componentParent.service.deleteEmployee(gridData.data.id).then((response: any) => {
+            this.getEmployees();
+        });
+    }
+
+    private editEmployee(gridData) {
         gridData.context.componentParent.modalComponent.open(gridData.data);
     }
 }

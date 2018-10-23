@@ -24,8 +24,4 @@ export class EditCellRendererComponent implements ICellRendererAngularComp {
         this.params = params;
         this.buttonId = 'editButton' + this.params.rowIndex;
     }
-
-    getTemplate() {
-        return '<button id="" class="btn btn-primary pull-right" type="button" (click)="onAdd()"><span class="fa fa-pencil"></span></button>'
-    }
 }

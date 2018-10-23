@@ -16,4 +16,8 @@ export class EmployeeService {
     saveEmployee(employee) {
         return this.abstractService.post(this.resourcesService.serviceUrls.employee, employee);
     }
+
+    deleteEmployee(id: string) {
+        return this.abstractService.delete(this.resourcesService.serviceUrls.employee, id);
+    }
 }
