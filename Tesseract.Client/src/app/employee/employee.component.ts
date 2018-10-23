@@ -24,8 +24,8 @@ export class EmployeeComponent {
         columnDefs: [
             { headerName: 'First Name', field: 'firstName' },
             { headerName: 'Last Name', field: 'lastName' },
-            { headerName: '', width: 20, cellRendererFramework: EditCellRendererComponent, onCellClicked: this.editEmployee },
-            { headerName: '', width: 20, cellRendererFramework: DeleteCellRendererComponent, onCellClicked: this.deleteEmployee }
+            { headerName: '', width: 40, cellRendererFramework: EditCellRendererComponent, onCellClicked: this.editEmployee },
+            { headerName: '', width: 40, cellRendererFramework: DeleteCellRendererComponent, onCellClicked: this.deleteEmployee }
         ],
         enableColResize: false,
         enableSorting: true,
