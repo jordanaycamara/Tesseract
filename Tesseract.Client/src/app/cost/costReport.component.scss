@@ -1,0 +1,29 @@
+div.costLabel {
+    text-align: left;
+}
+
+div.costAmount {
+    text-align: right;
+}
+
+div.childRow {
+    text-indent: 50px;
+}
+
+div.dependentDiscountRow {
+    text-indent: 100px;
+}
+
+div.header {
+    margin-top: 10px;
+}
+
+div.deduction {
+    @extend div.costAmount;
+    color: #73BD47
+}
+
+div.discount {
+    @extend div.costAmount;
+    color: #ED6A61;
+}

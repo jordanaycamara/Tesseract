@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { ResourcesService } from './resources/resources.services';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,7 @@ export class AppComponent {
 
   selectedTab = this.tabs[0];
 
-  constructor(private router: Router) {
-
+  constructor(private router: Router, private resourcesService: ResourcesService) {
   }
 
   getTabClass(tab) {
@@ -25,6 +25,23 @@ export class AppComponent {
       classes.push('active');
     }
     return classes;
+  }
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      this.getInitialTab(event);
+    });
+  }
+
+  getInitialTab(event) {
+    if (event instanceof NavigationEnd && event.url) {
+      var selectedTab = this.resourcesService._.find(this.tabs, function(element) {
+        return element.link == event.url;
+      });
+
+      this.selectedTab = selectedTab;
+      return;
+    }
   }
 
   onClick(tab) {

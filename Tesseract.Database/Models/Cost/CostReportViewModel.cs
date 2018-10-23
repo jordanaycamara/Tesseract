@@ -7,6 +7,7 @@ namespace Tesseract.Database.Models
 {
     public class CostReportViewModel
     {
+        public decimal EmployeeCompensation { get; set; }
         public List<CostViewModel> Costs { get; set; }
         public decimal PeriodCost { get; set; }
         public decimal MonthlyCost { get; set; }

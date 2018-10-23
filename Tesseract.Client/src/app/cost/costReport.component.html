@@ -1,3 +1,81 @@
-<div>Period cost: {{costReport}}</div>
-<div>Monthly cost: {{costReport.monthlyCost}}</div>
-<div>Annual cost: {{costReport.annualCost}}</div>
+<div class="row">
+    <div class="col-lg-12">
+            <legend>
+                Cost Report
+            </legend>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <h5>Employees</h5>
+        <div *ngFor="let cost of costReport.costs">
+            <hr>
+            <div class="row">
+                    <div class="costAmount col-lg-12">
+                        {{ costReport.employeeCompensation | currency }}
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="costLabel col-lg-6">
+                        {{ cost.name }}
+                    </div>
+                    <div class="deduction col-lg-6">
+                       - {{ cost.deductionAmount | currency }}
+                    </div>
+            </div>
+            <div *ngIf="cost.discounts.length > 0" class="header">
+                <h6 >Discounts</h6>
+            </div>
+            <div *ngFor="let discount of cost.discounts" class="childRow">
+                    <div class="row">
+                            <div class="costLabel col-lg-6">
+                                {{ discount.name }} discount
+                            </div>
+                            <div class="discount col-lg-6">
+                                + {{ discount.amount | currency }}
+                            </div>
+                    </div>
+            </div>
+
+            <div *ngIf="cost.dependents.length > 0" class="header">
+                    <h6>Dependents</h6>
+            </div>
+            <div *ngFor="let dependent of cost.dependents" class="childRow">
+                <div class="row">
+                        <div class="costLabel col-lg-6">
+                            {{ dependent.name }}
+                        </div>
+                        <div class="deduction col-lg-6">
+                           - {{ dependent.deductionAmount | currency }}
+                        </div>
+                </div>
+                <div *ngIf="cost.discounts.length > 0" class="header">
+                    <h6 >Discounts</h6>
+                </div>
+                <div *ngFor="let discount of dependent.discounts" class="dependentDiscountRow">
+                        <div class="row">
+                                <div class="costLabel col-lg-6">
+                                    {{ discount.name }} discount
+                                </div>
+                                <div class="discount col-lg-6">
+                                   + {{ discount.amount | currency }}
+                                </div>
+                        </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                    <div style="text-align: right;" class="col-lg-12">
+                            <span style="font-weight: bold">Sub-total</span> {{ cost.totalCost | currency }}
+                    </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<hr>
+<div class="row">
+        <div style="text-align: right;" class="col-lg-12">
+            <span style="font-weight: bold">Total</span> {{ costReport.annualCost | currency}}
+        </div>
+</div>

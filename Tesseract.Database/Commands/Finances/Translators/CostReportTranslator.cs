@@ -27,16 +27,17 @@ namespace Tesseract.Database.Commands.Finances.Translators
 
             var total = 0.0m;
 
+            viewModel.EmployeeCompensation = employeeCompensation.Amount;
+
             foreach (var employee in employees)
             {
                 var empCost = new CostViewModel();
                 var totalDeduction = 0.0m;
                 var empDeduction = employeeBenefit.Amount;
 
+                empCost.DeductionAmount = empDeduction;
                 ApplyATeamDiscount(ref empDeduction, ref empCost, employee, aTeamDiscount);
-
                 empCost.Name = $"{employee.FirstName} {employee.LastName}";
-                empCost.Amount = empDeduction;
                 viewModel.Costs.Add(empCost);
 
                 totalDeduction += empDeduction;
@@ -46,16 +47,21 @@ namespace Tesseract.Database.Commands.Finances.Translators
                     var depCost = new CostViewModel();
                     
                     var depDeduction = dependentBenefit.Amount;
-                    ApplyATeamDiscount(ref depDeduction, ref depCost, dependent, aTeamDiscount);
+                    depCost.DeductionAmount = depDeduction;
 
+                    ApplyATeamDiscount(ref depDeduction, ref depCost, dependent, aTeamDiscount);
                     depCost.Name = $"{dependent.FirstName} {dependent.LastName}";
-                    depCost.Amount = depDeduction;
                     empCost.Dependents.Add(depCost);
                     totalDeduction += depDeduction;
                 }
 
+                empCost.TotalDeduction = totalDeduction;
+
                 // if value is negative, then there would be no cost to the employer
-                total += Math.Max(employeeCompensation.Amount - totalDeduction, 0);
+                var totalCost = Math.Max(employeeCompensation.Amount - totalDeduction, 0);
+                empCost.TotalCost = totalCost;
+
+                total += totalCost;
             };
 
             viewModel.PeriodCost = Math.Round(total / 26, 2);
@@ -69,17 +75,16 @@ namespace Tesseract.Database.Commands.Finances.Translators
         {
             if (person.FirstName.StartsWith('A'))
             {
-
-                var discountValue = discount.Percentage;
+                var discountAmount = value * discount.Percentage;
                 var costDiscount = new DiscountViewModel
                 {
-                    Name = discount.DiscountType.ToString(),
+                    Name = "A-Team",
                     Type = discount.DiscountType,
-                    Percentage = discountValue
+                    Amount = discountAmount
                 };
                 cost.Discounts.Add(costDiscount);
 
-                value -= value * discountValue;
+                value -= discountAmount;
             }
         }
     }
