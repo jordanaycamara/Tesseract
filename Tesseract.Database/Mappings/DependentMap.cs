@@ -13,7 +13,7 @@ namespace Tesseract.Database.Mappings
             Schema(SchemaConstants.Company);
             Map(x => x.FirstName);
             Map(x => x.LastName);
-            References(x => x.Employee, "EmployeeId").Cascade.None();
+            Map(x => x.EmployeeId).Nullable();
         }
     }
 }

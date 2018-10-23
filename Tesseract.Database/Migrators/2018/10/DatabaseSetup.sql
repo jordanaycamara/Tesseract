@@ -10,7 +10,7 @@ CREATE TABLE Company.[Dependent]
     Id UNIQUEIDENTIFIER CONSTRAINT [PK_DependentId] PRIMARY KEY DEFAULT NEWID(),
     [FirstName] VARCHAR(100) NOT NULL,
     [LastName] VARCHAR(100) NOT NULL,
-    [EmployeeId] UNIQUEIDENTIFIER CONSTRAINT [FK_Dependent_EmployeeId] FOREIGN KEY REFERENCES Company.Employee(Id) NOT NULL
+    [EmployeeId] UNIQUEIDENTIFIER CONSTRAINT [FK_Dependent_EmployeeId] FOREIGN KEY REFERENCES Company.Employee(Id) NULL
 )
 
 CREATE TABLE Finances.BenefitType

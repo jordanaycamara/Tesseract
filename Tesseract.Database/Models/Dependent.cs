@@ -7,6 +7,6 @@ namespace Tesseract.Database.Models
 {
     public class Dependent : Person
     {
-        public virtual Employee Employee { get; set; }
+        public virtual Guid? EmployeeId { get; set; }
     }
 }

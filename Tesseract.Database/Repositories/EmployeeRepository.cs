@@ -48,6 +48,10 @@ namespace Tesseract.Database.Repositories
                 using (var transaction = session.BeginTransaction())
                 {
                     session.SaveOrUpdate(employee);
+                    //foreach (var dependent in employee.Dependents)
+                    //{
+                    //    dependent.EmployeeId = employee.Id;
+                    //}
                     transaction.Commit();
                     return employee;
                 }
