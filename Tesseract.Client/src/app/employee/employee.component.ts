@@ -3,20 +3,22 @@ import { EmployeeService } from './employee.service';
 import {GridOptions, Grid} from "ag-grid-community";
 import { AddEmployeeModalComponent } from './modal/addEmployeeModal.component';
 import { Employee } from '../models/Employee';
+import { EditCellRendererComponent } from '../common/cellRenderer/editCellRenderer.component';
 
 @Component({
   selector: 'employee',
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.scss'],
-  entryComponents: [AddEmployeeModalComponent]
+  entryComponents: [AddEmployeeModalComponent, EditCellRendererComponent]
 })
 export class EmployeeComponent {
     employees: [Employee];
 
     gridOptions = <GridOptions>{
         columnDefs: [
-            {headerName: 'First Name', field: 'firstName' },
-            {headerName: 'Last Name', field: 'lastName' }
+            { headerName: 'First Name', field: 'firstName' },
+            { headerName: 'Last Name', field: 'lastName' },
+            { headerName: '', width: 20, cellRendererFramework: EditCellRendererComponent, onCellClicked: this.editEmployee }
         ],
         enableColResize: false,
         enableSorting: true,
@@ -41,5 +43,9 @@ export class EmployeeComponent {
             this.gridOptions.api.setRowData(response);
             this.gridOptions.api.sizeColumnsToFit();
         });
+    }
+
+    private editEmployee(gridData) {
+
     }
 }

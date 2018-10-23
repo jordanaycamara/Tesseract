@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 
 import { EmployeeModule } from './employee/employee.module';
 import { CostReportModule } from './cost/costReport.module';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CostReportModule } from './cost/costReport.module';
     RoutesModule,
     EmployeeModule,
     CostReportModule,
-    NgbModule
+    NgbModule,
+    AgGridModule.withComponents([])
   ],
   providers: [],
   bootstrap: [AppComponent]
