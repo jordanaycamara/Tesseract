@@ -9,7 +9,8 @@ export class CostReportService {
 
     }
 
-    getCostReport() {
-        return this.abstractService.get(this.resourcesService.serviceUrls.cost);
+    getCostReport(type: number) {
+        var url = this.resourcesService.serviceUrls.cost + "/" + type;
+        return this.abstractService.get(url);
     }
 }

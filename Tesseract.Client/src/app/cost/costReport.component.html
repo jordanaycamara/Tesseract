@@ -1,8 +1,19 @@
 <div class="row">
-    <div class="col-lg-12">
-            <legend>
+    <div class="col-lg-12 text-center">
+            <h4>
                 Cost Report
-            </legend>
+            </h4>
+            <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioGroup">
+                <label ngbButtonLabel [ngClass]="getRadioButtonClass(1)">
+                  <input ngbButton type="radio" [value]="1" (click)="onClick(1)"> Yearly
+                </label>
+                <label ngbButtonLabel [ngClass]="getRadioButtonClass(2)">
+                  <input ngbButton type="radio" value="2" (click)="onClick(2)"> Monthly
+                </label>
+                <label ngbButtonLabel [ngClass]="getRadioButtonClass(3)">
+                    <input ngbButton type="radio" value="3" (click)="onClick(3)"> Pay Period
+                  </label>
+            </div>
     </div>
 </div>
 <div class="row">
