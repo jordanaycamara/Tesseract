@@ -9,7 +9,7 @@ import { CostReport } from '../models/CostReport';
 })
 export class CostReportComponent {
     costReport: CostReport = new CostReport();
-    selectedReport: number;
+    selectedReport: number = 1;
 
     constructor(private service: CostReportService) {
 

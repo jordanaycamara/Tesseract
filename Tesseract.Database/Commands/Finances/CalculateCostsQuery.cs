@@ -9,7 +9,7 @@ namespace Tesseract.Database.Commands.Finances
 {
     public interface ICalculateCostsQuery
     {
-        CostReportViewModel CalculateCosts();
+        CostReportViewModel CalculateCosts(int type);
     }
 
     public class CalculateCostsQuery : ICalculateCostsQuery
@@ -28,13 +28,13 @@ namespace Tesseract.Database.Commands.Finances
             _translator = translator;
         }
 
-        public CostReportViewModel CalculateCosts()
+        public CostReportViewModel CalculateCosts(int type)
         {
             var employees = _employeeRepo.GetEmployees();
             var benefits = _financeRepo.GetBenefits();
             var discounts = _financeRepo.GetDiscounts();
 
-            var result = _translator.ToViewModel(employees, benefits, discounts);
+            var result = _translator.ToViewModel(type, employees, benefits, discounts);
             return result;
         }
     }

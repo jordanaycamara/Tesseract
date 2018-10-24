@@ -18,10 +18,10 @@ namespace Tesseract.Service.Cost
             _calculateQuery = calculateQuery;
         }
 
-        [HttpGet]
-        public ActionResult<CostReportViewModel> Get()
+        [HttpGet("{type:int}")]
+        public ActionResult<CostReportViewModel> Get(int type)
         {
-            return _calculateQuery.CalculateCosts();
+            return _calculateQuery.CalculateCosts(type);
         }
     }
 }

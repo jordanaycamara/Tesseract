@@ -12,11 +12,11 @@ namespace Tesseract.Database.Commands.Finances.Translators
 {
     public interface ICostReportTranslator
     {
-        CostReportViewModel ToViewModel(List<Employee> employees, List<Benefit> benefits, List<Discount> discounts);
+        CostReportViewModel ToViewModel(int type, List<Employee> employees, List<Benefit> benefits, List<Discount> discounts);
     }
     public class CostReportTranslator : ICostReportTranslator
     {
-        public CostReportViewModel ToViewModel(List<Employee> employees, List<Benefit> benefits, List<Discount> discounts)
+        public CostReportViewModel ToViewModel(int type, List<Employee> employees, List<Benefit> benefits, List<Discount> discounts)
         {
             var viewModel = new CostReportViewModel();
 
@@ -27,14 +27,33 @@ namespace Tesseract.Database.Commands.Finances.Translators
 
             var total = 0.0m;
 
-            var yearlyCompensation = employeeCompensation.Amount * 26;
+            var reportType = (ReportTypeEnum) type;
+
+            var factor = 1;
+
+            switch (reportType)
+            {
+                case ReportTypeEnum.Yearly:
+                    factor = 1;
+                    break;
+                case ReportTypeEnum.Monthly:
+                    factor = 12;
+                    break;
+                case ReportTypeEnum.PayPeriod:
+                    factor = 26;
+                    break;
+                default:
+                    break;
+            }
+
+            var yearlyCompensation = (employeeCompensation.Amount * 26) / factor;
             viewModel.EmployeeCompensation = yearlyCompensation;
 
             foreach (var employee in employees)
             {
                 var empCost = new CostViewModel();
                 var totalDeduction = 0.0m;
-                var empDeduction = employeeBenefit.Amount;
+                var empDeduction = employeeBenefit.Amount / factor;
 
                 empCost.DeductionAmount = empDeduction;
                 ApplyATeamDiscount(ref empDeduction, ref empCost, employee, aTeamDiscount);
@@ -47,7 +66,7 @@ namespace Tesseract.Database.Commands.Finances.Translators
                 {
                     var depCost = new CostViewModel();
                     
-                    var depDeduction = dependentBenefit.Amount;
+                    var depDeduction = dependentBenefit.Amount / factor;
                     depCost.DeductionAmount = depDeduction;
 
                     ApplyATeamDiscount(ref depDeduction, ref depCost, dependent, aTeamDiscount);
