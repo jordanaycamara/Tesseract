@@ -27,7 +27,8 @@ namespace Tesseract.Database.Commands.Finances.Translators
 
             var total = 0.0m;
 
-            viewModel.EmployeeCompensation = employeeCompensation.Amount;
+            var yearlyCompensation = employeeCompensation.Amount * 26;
+            viewModel.EmployeeCompensation = yearlyCompensation;
 
             foreach (var employee in employees)
             {
@@ -57,8 +58,7 @@ namespace Tesseract.Database.Commands.Finances.Translators
 
                 empCost.TotalDeduction = totalDeduction;
 
-                // if value is negative, then there would be no cost to the employer
-                var totalCost = Math.Max(employeeCompensation.Amount - totalDeduction, 0);
+                var totalCost = yearlyCompensation - totalDeduction;
                 empCost.TotalCost = totalCost;
 
                 total += totalCost;
