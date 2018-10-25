@@ -46,8 +46,8 @@ namespace Tesseract.Database.Commands.Finances.Translators
                     break;
             }
 
-            var yearlyCompensation = (employeeCompensation.Amount * 26) / factor;
-            viewModel.EmployeeCompensation = yearlyCompensation;
+            var compensation = (employeeCompensation.Amount * 26) / factor;
+            viewModel.EmployeeCompensation = compensation;
 
             foreach (var employee in employees)
             {
@@ -77,15 +77,13 @@ namespace Tesseract.Database.Commands.Finances.Translators
 
                 empCost.TotalDeduction = totalDeduction;
 
-                var totalCost = yearlyCompensation - totalDeduction;
+                var totalCost = compensation - totalDeduction;
                 empCost.TotalCost = totalCost;
 
                 total += totalCost;
             };
-
-            viewModel.PeriodCost = Math.Round(total / 26, 2);
-            viewModel.MonthlyCost = Math.Round(total / 12, 2);
-            viewModel.AnnualCost = Math.Round(total);
+            
+            viewModel.TotalCost = Math.Round(total, 2);
 
             return viewModel;
         }

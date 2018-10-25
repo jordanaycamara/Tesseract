@@ -9,9 +9,7 @@ namespace Tesseract.Database.Models
     {
         public decimal EmployeeCompensation { get; set; }
         public List<CostViewModel> Costs { get; set; }
-        public decimal PeriodCost { get; set; }
-        public decimal MonthlyCost { get; set; }
-        public decimal AnnualCost { get; set; }
+        public decimal TotalCost { get; set; }
 
         public CostReportViewModel()
         {
